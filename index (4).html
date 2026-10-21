@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GONNIE FLEET – Fleet Intelligence | R200 per Truck per Month</title>
+<meta name="description" content="Every trip, litre and rand under control. GPS distance, fuel exception flags, investigation centre and WhatsApp trip reports for South African fleets. R200 per truck per month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7fb;--panel:rgba(255,255,255,.8);--ink:#0a1220;--mute:#4a5a73;--line:rgba(10,18,32,.12);--cy:#1456c4;--cy-ink:#fff;--glow:rgba(20,86,196,.16);--warn:#b91c1c;--grid:rgba(10,18,32,.05);--go:#e8590c;--go-ink:#fff;--go-glow:rgba(232,89,12,.3);--money:#0a7d4f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#050b1c;--panel:rgba(14,26,56,.62);--ink:#eaf0fb;--mute:#93a4c4;--line:rgba(110,150,230,.18);--cy:#4f9bff;--cy-ink:#04122b;--glow:rgba(79,155,255,.22);--warn:#ff5a5f;--grid:rgba(110,150,230,.06);--go:#ff7a1a;--go-ink:#1a0900;--go-glow:rgba(255,122,26,.38);--money:#34d399}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#050b1c;--panel:rgba(14,26,56,.62);--ink:#eaf0fb;--mute:#93a4c4;--line:rgba(110,150,230,.18);--cy:#4f9bff;--cy-ink:#04122b;--glow:rgba(79,155,255,.22);--warn:#ff5a5f;--grid:rgba(110,150,230,.06);--go:#ff7a1a;--go-ink:#1a0900;--go-glow:rgba(255,122,26,.38);--money:#34d399}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Manrope,system-ui,sans-serif;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:56px 56px;overflow-x:hidden}
+h1,h2,h3{font-family:Sora,Manrope,system-ui,sans-serif;margin:0;line-height:1.08;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.bar{position:sticky;top:0;z-index:5;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:14px}
+.logo{font:800 18px Sora,sans-serif;text-decoration:none;letter-spacing:.04em}
+.logo b{color:var(--cy)}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;color:var(--mute);font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--go);color:var(--go-ink);font-weight:700;padding:14px 26px;border-radius:10px;text-decoration:none;border:1px solid var(--go);box-shadow:0 0 30px var(--go-glow);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);box-shadow:none}
+.btn.sm{padding:9px 18px;font-size:.93rem}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:72px 0 84px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:800}
+.hero .lead{font-size:1.18rem;color:var(--mute);max-width:46ch;margin:24px 0 32px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.fine{color:var(--mute);font-size:.9rem;margin:16px 0 0}
+.glass{background:var(--panel);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.tele{padding:18px;position:relative;box-shadow:0 0 70px var(--glow)}
+.tele small{color:var(--mute);font-size:.8rem}
+.tele svg{width:100%;height:auto;display:block;margin:8px 0}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kp div{border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.kp span{display:block;color:var(--mute);font-size:.76rem}
+.kp strong{font:700 1.4rem Sora,sans-serif}
+.kp .w strong{color:var(--warn)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.stats div{padding:22px;border-right:1px solid var(--line)}
+.stats div:last-child{border:0}
+.stats strong{display:block;font:800 1.9rem Sora,sans-serif;color:var(--money)}
+.stats span{color:var(--mute);font-size:.92rem}
+section{padding:84px 0 0}
+section h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;max-width:18ch}
+.sub{color:var(--mute);max-width:54ch;margin:14px 0 36px}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cell{padding:26px}
+.cell:nth-child(1){grid-column:span 4}.cell:nth-child(2){grid-column:span 2}.cell:nth-child(3){grid-column:span 2}.cell:nth-child(4){grid-column:span 2}.cell:nth-child(5){grid-column:span 2}
+.cell h3{font-size:1.25rem;font-weight:700;margin-bottom:14px}
+.cell ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cell:nth-child(1) ul{grid-template-columns:1fr 1fr;gap:14px 24px}
+.cell li{color:var(--mute);font-size:.95rem;line-height:1.5}
+.cell li b{display:block;color:var(--ink);font-weight:700;font-size:.98rem}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;list-style:none;padding:0;margin:0;counter-reset:s}
+.flow li{counter-increment:s;padding:24px;position:relative}
+.flow li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--cy);color:var(--cy);font:700 .95rem Sora,sans-serif;margin-bottom:14px;box-shadow:0 0 18px var(--glow)}
+.flow b{display:block;font:700 1.1rem Sora,sans-serif;margin-bottom:4px}
+.flow span{color:var(--mute);font-size:.95rem}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.price .glass{padding:32px}
+.big{font:800 3.2rem Sora,sans-serif;line-height:1;color:var(--money)}
+.big small{font:500 1rem Manrope,sans-serif;color:var(--mute)}
+ul.tick{padding:0;margin:24px 0 0;list-style:none}
+ul.tick li{padding:6px 0 6px 28px;position:relative}
+ul.tick li::before{content:"";position:absolute;left:3px;top:14px;width:11px;height:6px;border-left:2px solid var(--money);border-bottom:2px solid var(--money);transform:rotate(-45deg)}
+label{font-weight:700;display:block;margin-bottom:10px}
+input[type=range]{width:100%;accent-color:var(--cy);height:32px}
+.total{font:800 2.8rem Sora,sans-serif;margin:8px 0 2px;color:var(--money)}
+.ref{color:var(--mute);margin:0 0 20px;font-size:.93rem}
+details{border-top:1px solid var(--line);padding:18px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem}
+details p{color:var(--mute);margin:10px 0 0;max-width:62ch}
+.final{padding:64px 28px;text-align:center;box-shadow:0 0 90px var(--glow)}
+.final h2{margin:0 auto 12px;max-width:20ch}
+.final p{color:var(--mute);margin:0 0 28px}
+.roi{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:32px;box-shadow:0 0 70px var(--glow)}
+.roi input[type=number]{width:100%;font:700 1.1rem Manrope,sans-serif;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink)}
+.fld{margin-bottom:20px}
+.out{display:grid;gap:12px;align-content:start}
+.out>div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.out strong{font-family:Sora,sans-serif}
+.out .net strong{color:var(--money);font-size:1.7rem}
+.out .fine{margin:0}
+.stick{display:none}
+@media (max-width:860px){.roi{grid-template-columns:1fr;padding:22px}body{padding-bottom:84px}.stick{display:block;position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:6;text-align:center}}
+footer{margin-top:84px;padding:40px 0 56px;color:var(--mute);font-size:.92rem;border-top:1px solid var(--line)}
+footer .wrap{display:grid;gap:18px}
+footer h3{font-size:1rem;color:var(--ink);margin-bottom:4px}
+footer p{margin:0;max-width:72ch}
+@media (max-width:860px){.hero,.price{grid-template-columns:1fr}.hero{padding:44px 0 56px}.flow,.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}.bento{grid-template-columns:1fr}.cell:nth-child(n){grid-column:auto}.cell:nth-child(1) ul{grid-template-columns:1fr}nav a:not(.btn){display:none}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+  <a class="logo" href="#top">GONNIE <b>FLEET</b></a>
+  <nav aria-label="Main"><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a class="btn sm" href="#pricing">Get started</a></nav>
+</div></div>
+
+<main id="top" class="wrap">
+<div class="hero">
+  <div>
+    <h1>You don’t have a truck problem. You have an information problem.</h1>
+    <p class="lead">See every trip, litre and rand across your fleet in one live system. Alerts catch fuel exceptions, suspicious trips and missed services before they cost you.</p>
+    <div class="cta">
+      <a class="btn" href="#pricing">Start from R200 per truck</a>
+      <a class="btn ghost" href="https://wa.me/27836445128?text=Hi%2C%20I%27d%20like%20a%20free%20GONNIE%20FLEET%20Fleet%20Review." rel="noopener">Book a free Fleet Review</a>
+    </div>
+    <p class="fine">The Fleet Review is free. No contracts, cancel any month, live within a day. Made in Durban.</p>
+  </div>
+  <div class="glass tele" role="img" aria-label="Sample live fleet view with a truck on a route, one fuel flag, cost per km and compliance">
+    <small>Live fleet view · sample data</small>
+    <svg viewBox="0 0 440 230" aria-hidden="true">
+      <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="var(--cy)" stop-opacity=".1"/><stop offset="1" stop-color="var(--cy)"/></linearGradient></defs>
+      <path id="route" d="M20 190 C90 190 90 90 160 100 S250 170 300 110 S380 40 420 50" fill="none" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M20 215H420M20 140H420M20 65H420" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 7"/>
+      <circle cx="20" cy="190" r="5" fill="var(--cy)"/><circle cx="420" cy="50" r="5" fill="var(--cy)"/>
+      <circle cx="160" cy="100" r="6" fill="var(--warn)"/><circle cx="160" cy="100" r="6" fill="none" stroke="var(--warn)"><animate class="mo" attributeName="r" values="6;20" dur="2.2s" repeatCount="indefinite"/><animate class="mo" attributeName="opacity" values=".9;0" dur="2.2s" repeatCount="indefinite"/></circle>
+      <text x="172" y="86" fill="var(--warn)" font-size="12" font-family="Manrope">Fuel +27% · Truck 04</text>
+      <circle r="6" fill="var(--cy)"><animateMotion class="mo" dur="7s" repeatCount="indefinite"><mpath href="#route"/></animateMotion></circle>
+    </svg>
+    <div class="kp">
+      <div><span>Cost per km</span><strong>R14.20</strong></div>
+      <div class="w"><span>Fuel flags</span><strong>3</strong></div>
+      <div><span>Compliance</span><strong>98%</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div><strong>R200</strong><span>per truck, per month</span></div>
+  <div><strong>14</strong><span>connected tabs, one source of truth</span></div>
+  <div><strong>07:00</strong><span>daily fleet health check</span></div>
+  <div><strong>100%</strong><span>your data, in your own account</span></div>
+</div>
+
+<section id="features">
+  <h2>Everything your fleet needs. Nothing it doesn’t.</h2>
+  <p class="sub">Every feature is included for every truck. No tiers, no add-ons.</p>
+  <div class="bento">
+    <div class="glass cell"><h3>Fuel control</h3><ul>
+      <li><b>GPS trip distance</b>True mapped distance, even when an odometer reading is missing.</li>
+      <li><b>Fuel mismatch flags</b>Fuel used is checked against fuel filled. Over 20% variance is flagged.</li>
+      <li><b>Fuel analysis</b>Expected against actual km per litre for every truck.</li>
+      <li><b>Slip and odometer checks</b>Match slips and photos to the log, with a corrections record.</li></ul></div>
+    <div class="glass cell"><h3>Investigation</h3><ul>
+      <li><b>Investigation Centre</b>Exceptions, alerts and cases in one place.</li>
+      <li><b>Daily 07:00 check</b>A health report emailed to you.</li>
+      <li><b>Guard log</b>Gate in and out, matched to trips.</li></ul></div>
+    <div class="glass cell"><h3>Money</h3><ul>
+      <li><b>Live dashboard</b>Cost per km, with impossible values blocked.</li>
+      <li><b>Profit and margin</b>Revenue per trip, plus top and bottom performers.</li>
+      <li><b>Job estimator and forecast</b>Price jobs on real costs and see where the month is heading.</li></ul></div>
+    <div class="glass cell"><h3>Service and compliance</h3><ul>
+      <li><b>Maintenance reminders</b>A service register per vehicle.</li>
+      <li><b>Compliance tracking</b>Licence discs, driver licences and permits, with expiry warnings.</li>
+      <li><b>Registers</b>Every driver and truck, feeding the Trip Log.</li></ul></div>
+    <div class="glass cell"><h3>Capture and share</h3><ul>
+      <li><b>Phone trip form</b>Drivers log trips straight into your Trip Log.</li>
+      <li><b>Auto-filled trips</b>Odometer, destination and litres carry forward.</li>
+      <li><b>WhatsApp trip reports</b>Send a clean summary to an owner, client or driver.</li></ul></div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>Live within a day.</h2>
+  <p class="sub">Four steps from sign-up to answers.</p>
+  <ol class="flow">
+    <li class="glass"><b>Subscribe</b><span>Choose your number of trucks. R200 each per month.</span></li>
+    <li class="glass"><b>We set you up</b><span>Trucks, drivers and routes loaded into your own copy.</span></li>
+    <li class="glass"><b>Drivers capture trips</b><span>Distance, fuel and cost calculate themselves.</span></li>
+    <li class="glass"><b>You see the truth</b><span>Daily alerts and WhatsApp reports show where the money goes.</span></li>
+  </ol>
+</section>
+
+<section id="roi">
+  <h2>What is 1% of your diesel worth?</h2>
+  <p class="sub">Change the numbers to match your fleet. This shows what you would keep if GONNIE FLEET helped you recover a small share of fuel you cannot account for today. It is an estimate, not a promise.</p>
+  <div class="glass roi">
+    <div>
+      <div class="fld"><label for="ct">Trucks in your fleet</label><input id="ct" type="number" min="1" max="50" value="5" inputmode="numeric"></div>
+      <div class="fld"><label for="sp">Diesel spend per truck, per month (R)</label><input id="sp" type="number" min="0" step="500" value="30000" inputmode="numeric"></div>
+      <div class="fld"><label for="pc">Fuel recovered: <output id="pcv">3</output>%</label><input id="pc" type="range" min="1" max="10" value="3"></div>
+    </div>
+    <div class="out" aria-live="polite">
+      <div><span>Your monthly diesel bill</span><strong id="r-fuel"></strong></div>
+      <div><span>Fuel recovered</span><strong id="r-rec"></strong></div>
+      <div><span>GONNIE FLEET cost</span><strong id="r-cost"></strong></div>
+      <div class="net"><span>You keep, per month</span><strong id="r-net"></strong></div>
+      <p class="fine" id="r-be"></p>
+      <a class="btn" href="#pricing">See pricing for your fleet</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>One price. Everything included.</h2>
+  <p class="sub">The same R200 per truck whether you want a full month of control or just to check one recent trip.</p>
+  <div class="price">
+    <div class="glass">
+      <div class="big">R200 <small>per truck, per month</small></div>
+      <p class="fine">That is less than R7 a day per truck.</p>
+      <ul class="tick">
+        <li>All features, no tiers</li>
+        <li>Monthly sign-up, cancel any month</li>
+        <li>Check a recent trip: one truck, one month</li>
+        <li>WhatsApp trip reports and daily alerts</li>
+        <li>Your data stays in your own private account</li>
+      </ul>
+    </div>
+    <div class="glass">
+      <label for="trucks">How many trucks? <output id="n">5</output></label>
+      <input id="trucks" type="range" min="1" max="50" value="5">
+      <div class="total" id="total">R1 000</div>
+      <p class="ref">per month · payment reference <b id="ref">GONNIE-5</b></p>
+      <a class="btn" id="subscribe" href="#" rel="noopener">Get banking details on WhatsApp</a>
+      <p class="fine">Cancel any month, no penalty. Pay by EFT. After paying, send your proof of payment in the same chat and we’ll set up your workbook. Prices in South African rand.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Questions</h2>
+  <p class="sub"></p>
+  <details><summary>Do I pay per driver or per user?</summary><p>No. Only per truck: R200 per truck per month.</p></details>
+  <details><summary>Can I try it for one truck or one month?</summary><p>Yes. Subscribe for a single truck for a single month. That also works if you only want to check a recent trip.</p></details>
+  <details><summary>Do I need to be good with spreadsheets?</summary><p>No. Drivers use a simple form and you read the dashboard.</p></details>
+  <details><summary>Does a fuel flag mean someone is stealing?</summary><p>No. A fuel exception is a prompt to check slips and odometers. It shows you where to look, and you decide what it means.</p></details>
+  <details><summary>Where is my data stored?</summary><p>In your own private account, never ours. You can export or delete it whenever you like.</p></details>
+  <details><summary>How do I cancel?</summary><p>Message us on WhatsApp before your next billing date. No contract, no penalty.</p></details>
+  <details><summary>How quickly will I see results?</summary><p>Your workbook is set up within a day. Fuel flags and the dashboard start working as soon as drivers log trips, so most fleets see their first exceptions in the first week.</p></details>
+  <details><summary>What do I need from my side?</summary><p>A list of your trucks, drivers and regular routes. We load them for you and show your drivers the phone form.</p></details>
+</section>
+
+<section>
+  <div class="glass final">
+    <h2>Know exactly where every rand goes.</h2>
+    <p>Book a free Fleet Review and see what your own numbers are hiding.</p>
+    <a class="btn" href="https://wa.me/27836445128?text=Hi%2C%20I%27d%20like%20a%20free%20GONNIE%20FLEET%20Fleet%20Review." rel="noopener">Book a free Fleet Review</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>GONNIE FLEET</b> by ARGS · Durban, South Africa · WhatsApp <a href="https://wa.me/27836445128" rel="noopener">083 644 5128</a> · <a href="mailto:gerswilledavids@gmail.com">gerswilledavids@gmail.com</a></p>
+    <div id="privacy"><h3>Privacy</h3><p>Your fleet data lives in your own private account. We access your workbook only to set it up and support you, and we never sell your data. Ask us on WhatsApp to export or delete anything.</p></div>
+    <div id="terms"><h3>Terms</h3><p>Monthly subscription, billed per truck, cancel any month by messaging us before your next billing date. Fuel flags and alerts are prompts to investigate, not findings of wrongdoing.</p></div>
+    <p>© 2026 GONNIE FLEET. All rights reserved.</p>
+  </div>
+</footer>
+<a class="btn stick" href="https://wa.me/27836445128?text=Hi%2C%20I%27d%20like%20a%20free%20GONNIE%20FLEET%20Fleet%20Review." rel="noopener">Book a free Fleet Review</a>
+
+<script>
+(function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.mo').forEach(function(e){e.remove();});}
+  var s=document.getElementById('trucks'),n=document.getElementById('n'),t=document.getElementById('total'),r=document.getElementById('ref'),a=document.getElementById('subscribe');
+  function fmt(v){return 'R'+String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00A0');}
+  function update(){
+    var c=parseInt(s.value,10)||1,amt=c*200;
+    n.textContent=c;t.textContent=fmt(amt);r.textContent='GONNIE-'+c;
+    var msg='Hi, I\u2019d like to subscribe to GONNIE FLEET for '+c+' truck'+(c>1?'s':'')+' ('+fmt(amt)+' per month). Please send the banking details. Reference: GONNIE-'+c;
+    a.href='https://wa.me/27836445128?text='+encodeURIComponent(msg);
+  }
+  var ct=document.getElementById('ct'),sp=document.getElementById('sp'),pc=document.getElementById('pc');
+  function calc(){
+    var c=Math.min(50,Math.max(1,parseInt(ct.value,10)||1)),spend=Math.max(0,parseFloat(sp.value)||0),p=parseInt(pc.value,10)||1;
+    var fuel=c*spend,rec=fuel*p/100,cost=c*200,net=rec-cost;
+    document.getElementById('pcv').textContent=p;
+    document.getElementById('r-fuel').textContent=fmt(Math.round(fuel));
+    document.getElementById('r-rec').textContent=fmt(Math.round(rec));
+    document.getElementById('r-cost').textContent=fmt(cost);
+    document.getElementById('r-net').textContent=(net<0?'-':'')+fmt(Math.abs(Math.round(net)));
+    document.getElementById('r-be').textContent=spend>0?'It pays for itself if you recover just '+(Math.round(20000/spend)/100)+'% of your diesel.':'Enter your diesel spend to see your break-even.';
+  }
+  ct.addEventListener('input',function(){var c=Math.min(50,Math.max(1,parseInt(ct.value,10)||1));s.value=c;update();calc();});
+  s.addEventListener('input',function(){ct.value=s.value;calc();});
+  sp.addEventListener('input',calc);pc.addEventListener('input',calc);
+  s.addEventListener('input',update);update();calc();
+})();
+</script>
+</body>
+</html>
