@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GONNIE FLEET – Fleet Intelligence on Google Sheets | R200 per Truck per Month</title>
+<meta name="description" content="GONNIE FLEET gives South African fleets total control of fuel, trips, compliance and profit. GPS distance, fuel exception flags, investigation centre, WhatsApp trip reports. R200 per truck per month.">
+<meta name="keywords" content="fleet management South Africa, truck fuel tracking, fleet management Google Sheets, diesel reconciliation, trip log, fleet investigation, Durban fleet software">
+<meta property="og:title" content="GONNIE FLEET – Fleet Intelligence for R200 per truck">
+<meta property="og:description" content="Every trip, litre and rand under control. Built on Google Sheets.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0f0c">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚛</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GONNIE FLEET","applicationCategory":"BusinessApplication","operatingSystem":"Web, Google Sheets","description":"Fleet intelligence on Google Sheets: GPS distance, fuel reconciliation, investigation centre, compliance reminders and WhatsApp trip reports.","offers":{"@type":"Offer","price":"200","priceCurrency":"ZAR","description":"Per truck per month, all features included"},"areaServed":"ZA"}</script>
+<style>
+:root{--bg:#f6f2e9;--bg2:#ece6d8;--surface:rgba(255,255,255,.7);--text:#13201a;--muted:#55645b;--brand:#0b5d3b;--gold:#a8780f;--gold2:#d9a62e;--line:rgba(19,32,26,.12);--glow:rgba(168,120,15,.18);--ink:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0f0c;--bg2:#0f1712;--surface:rgba(255,255,255,.045);--text:#f2efe6;--muted:#9fb0a5;--brand:#3fd08f;--gold:#e5b94a;--gold2:#f5d27a;--line:rgba(255,255,255,.1);--glow:rgba(229,185,74,.16);--ink:#07120c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0f0c;--bg2:#0f1712;--surface:rgba(255,255,255,.045);--text:#f2efe6;--muted:#9fb0a5;--brand:#3fd08f;--gold:#e5b94a;--gold2:#f5d27a;--line:rgba(255,255,255,.1);--glow:rgba(229,185,74,.16);--ink:#07120c;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+h1,h2,h3,.serif{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:-.02em}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:20px;letter-spacing:.06em}.logo b{color:var(--gold)}
+nav{display:flex;align-items:center;gap:26px}nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}nav a:hover{color:var(--text)}
+@media(max-width:720px){nav a:not(.btn){display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1300;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;box-shadow:0 10px 30px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
+.btn.sm{padding:9px 18px;font-size:13px}
+.hero{position:relative;padding:92px 0 70px;background:radial-gradient(900px 420px at 80% -10%,var(--glow),transparent 70%),radial-gradient(700px 400px at 0 20%,color-mix(in srgb,var(--brand) 14%,transparent),transparent 70%)}
+.hgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media(max-width:900px){.hgrid{grid-template-columns:1fr}}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:7px 14px;border-radius:999px;background:var(--surface)}
+h1{font-size:clamp(38px,6.2vw,68px);line-height:1.04;margin:22px 0 20px}
+h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.lead{font-size:19px;color:var(--muted);max-width:560px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 14px}
+.note{font-size:13px;color:var(--muted)}
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;backdrop-filter:blur(10px);box-shadow:0 40px 80px -40px rgba(0,0,0,.5),0 0 0 1px var(--glow)}
+.dots{display:flex;gap:6px;margin-bottom:14px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.kpi b{font-family:Fraunces,Georgia,serif;font-size:22px}
+.kpi .ok{color:var(--brand)}.kpi .wn{color:var(--gold)}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;margin:16px 0 6px;padding:10px;background:var(--bg2);border:1px solid var(--line);border-radius:12px}
+.bars i{flex:1;background:linear-gradient(to top,var(--brand),color-mix(in srgb,var(--brand) 40%,var(--gold)));border-radius:6px 6px 0 0;opacity:.9}
+.bars i.f{background:linear-gradient(to top,var(--gold),var(--gold2))}
+.strip{border-block:1px solid var(--line);background:var(--bg2)}
+.strip .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;padding-block:30px;text-align:center}
+.strip b{display:block;font-family:Fraunces,Georgia,serif;font-size:32px;color:var(--gold)}
+.strip span{font-size:13px;color:var(--muted)}
+section{padding:88px 0}
+.kick{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h2{font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:10px 0 14px}
+.sub{color:var(--muted);max-width:620px;margin:0 0 44px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 20px 40px -24px var(--glow)}
+.ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,var(--glow),transparent);border:1px solid var(--line);margin-bottom:16px}
+.card h3{margin:0 0 8px;font-size:20px}.card p{margin:0;color:var(--muted);font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:s}
+.step{padding:26px;border-top:2px solid var(--gold);background:var(--surface);border-radius:0 0 16px 16px}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:Fraunces,Georgia,serif;font-size:38px;color:var(--gold);display:block;margin-bottom:6px}
+.step b{display:block;margin-bottom:4px}.step span{color:var(--muted);font-size:15px}
+.pricewrap{background:radial-gradient(700px 360px at 50% 0,var(--glow),transparent 70%)}
+.price{max-width:560px;margin:0 auto;border-radius:26px;padding:2px;background:linear-gradient(140deg,var(--gold2),transparent 35%,var(--gold) 100%)}
+.price>div{background:var(--bg);border-radius:24px;padding:38px 32px;text-align:center}
+.amt{font-family:Fraunces,Georgia,serif;font-size:76px;line-height:1;color:var(--gold);font-weight:700}
+.amt small{font-family:Inter,sans-serif;font-size:16px;color:var(--muted);font-weight:500}
+.price ul{list-style:none;padding:0;margin:26px 0;text-align:left}
+.price li{padding:8px 0 8px 32px;position:relative;border-bottom:1px solid var(--line);font-size:15px}
+.price li::before{content:"✓";position:absolute;left:0;top:8px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:#1b1300;font-size:12px;font-weight:800;display:grid;place-items:center}
+.calc{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px;margin:6px 0 20px}
+.calc input{width:100%;accent-color:var(--gold)}
+.total{font-family:Fraunces,Georgia,serif;font-size:34px;font-weight:700}
+#eft{display:none;text-align:left;margin-top:22px;background:var(--bg2);border:1px solid var(--gold);border-radius:16px;padding:20px}
+#eft.on{display:block}
+#eft h3{margin:0 0 12px;font-size:20px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row span{color:var(--muted)}.row b{text-align:right;word-break:break-all}
+.copy{background:none;border:1px solid var(--line);color:var(--gold);border-radius:8px;padding:2px 9px;font-size:12px;cursor:pointer;margin-left:8px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:12px}
+summary{font-weight:600;cursor:pointer}details p{color:var(--muted);margin:10px 0 0}
+.final{text-align:center;background:radial-gradient(800px 300px at 50% 100%,var(--glow),transparent 70%)}
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer a{color:var(--gold)}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="logo">GONNIE <b>FLEET</b></div>
+<nav><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a class="btn sm" href="#pricing">Get started</a></nav></div></header>
+
+<main>
+<div class="hero"><div class="wrap hgrid">
+<div>
+<span class="eyebrow">Fleet Intelligence · Made in Durban</span>
+<h1>You don’t have a truck problem. <em>You have an information problem.</em></h1>
+<p class="lead">GONNIE FLEET puts every trip, litre and rand of your fleet into one intelligent workbook, with alerts that catch fuel exceptions, suspicious trips and missed services before they cost you.</p>
+<div class="cta"><a class="btn" href="#pricing">Start from R200 per truck</a><a class="btn ghost" id="reviewBtn" href="#">Book a Fleet Review</a></div>
+<p class="note">No contracts. Cancel any month. Your data stays in your own Google account.</p>
+</div>
+<div class="mock" aria-label="Sample dashboard preview">
+<div class="dots"><i></i><i></i><i></i></div>
+<div class="kpis"><div class="kpi"><small>Cost / km</small><b>R14.20</b></div><div class="kpi"><small>Fuel flags</small><b class="wn">3</b></div><div class="kpi"><small>Compliance</small><b class="ok">98%</b></div></div>
+<div class="bars"><i style="height:45%"></i><i style="height:62%"></i><i style="height:50%"></i><i class="f" style="height:92%"></i><i style="height:58%"></i><i style="height:70%"></i><i style="height:54%"></i><i style="height:80%"></i></div>
+<p class="note" style="margin:6px 0 0">Sample data for illustration</p>
+</div></div></div>
+
+<div class="strip"><div class="wrap">
+<div><b>R200</b><span>per truck, per month</span></div><div><b>14</b><span>connected tabs, one source of truth</span></div><div><b>07:00</b><span>daily fleet health check</span></div><div><b>100%</b><span>your data, your Google account</span></div>
+</div></div>
+
+<section id="features"><div class="wrap">
+<div class="kick rv">Features</div><h2 class="rv">Everything your fleet needs. Nothing it doesn’t.</h2>
+<p class="sub rv">Every feature is included for every truck. No tiers, no add-ons.</p>
+<div class="grid">
+<div class="card rv"><div class="ico">📍</div><h3>GPS trip distance</h3><p>Distance calculated from start and end destinations through Google Maps, so you still get a true figure when an odometer reading is missing.</p></div>
+<div class="card rv"><div class="ico">⛽</div><h3>Fuel mismatch flagging</h3><p>Fuel used is checked against fuel filled on return. Anything beyond 20% variance is flagged for review.</p></div>
+<div class="card rv"><div class="ico">🕵️</div><h3>Fleet Investigation Centre</h3><p>Fuel exceptions, alerts and cases in one place, with a daily 07:00 health check emailed to you.</p></div>
+<div class="card rv"><div class="ico">💬</div><h3>WhatsApp trip reports</h3><p>Send a clean trip summary to the owner, a client or a driver straight from the workbook.</p></div>
+<div class="card rv"><div class="ico">📊</div><h3>Live dashboard and cost per km</h3><p>Fed directly from the Trip Log, with protection so impossible values never distort your totals.</p></div>
+<div class="card rv"><div class="ico">💰</div><h3>Revenue, profit and margin</h3><p>Enter revenue per trip and see profit, margin and Top and Bottom performers.</p></div>
+<div class="card rv"><div class="ico">🛠️</div><h3>Maintenance and service reminders</h3><p>A maintenance register tied to each vehicle, so service never sneaks up on you.</p></div>
+<div class="card rv"><div class="ico">📋</div><h3>Compliance tracking</h3><p>Licence discs, driver licences and permits with expiry warnings.</p></div>
+<div class="card rv"><div class="ico">🔁</div><h3>Auto-filled trips</h3><p>The previous trip’s end odometer, destination and litres carry into the next trip. Less typing, fewer errors.</p></div>
+<div class="card rv"><div class="ico">📱</div><h3>Trip capture web form</h3><p>Drivers log trips from a phone and entries land directly in your Trip Log.</p></div>
+<div class="card rv"><div class="ico">🧾</div><h3>Slip and odometer reconciliation</h3><p>Match fill-up slips and odometer photos against the log, with a fuel corrections log.</p></div>
+<div class="card rv"><div class="ico">⛽</div><h3>Fuel Analysis</h3><p>Expected versus actual KM/L for every truck, so you see which vehicles burn more than they should.</p></div>
+<div class="card rv"><div class="ico">💂</div><h3>Guard Log</h3><p>Record vehicles in and out at the gate and match them against the Trip Log.</p></div>
+<div class="card rv"><div class="ico">🧮</div><h3>Job Estimator</h3><p>Price a job before you accept it, using your real costs.</p></div>
+<div class="card rv"><div class="ico">📈</div><h3>Financial Forecast</h3><p>See where the month is heading, built from your own trip data.</p></div>
+<div class="card rv"><div class="ico">👷</div><h3>Driver and vehicle registers</h3><p>Every driver and truck in one place, feeding the Trip Log.</p></div>
+</div></div></section>
+
+<section id="how" style="background:var(--bg2)"><div class="wrap">
+<div class="kick rv">How it works</div><h2 class="rv">Live within a day.</h2><p class="sub rv"></p>
+<div class="steps">
+<div class="step rv"><b>Subscribe</b><span>Choose your number of trucks. R200 each per month.</span></div>
+<div class="step rv"><b>We set you up</b><span>Your trucks, drivers and routes loaded into your own copy.</span></div>
+<div class="step rv"><b>Drivers capture trips</b><span>Phone form or direct entry. Distance, fuel and cost calculate themselves.</span></div>
+<div class="step rv"><b>You see the truth</b><span>Daily alerts and WhatsApp reports show where the money goes.</span></div>
+</div></div></section>
+
+<section id="pricing" class="pricewrap"><div class="wrap">
+<div style="text-align:center"><div class="kick rv">Pricing</div><h2 class="rv">One price. Everything included.</h2><p class="sub rv" style="margin-inline:auto">Same R200 per truck whether you want a full month of fleet control or just to check a recent trip.</p></div>
+<div class="price rv"><div>
+<div class="amt">R200<small> / truck / month</small></div>
+<ul>
+<li>All features, no tiers</li>
+<li>Monthly sign-up, cancel any month</li>
+<li>Just need to check a recent trip? One truck, one month</li>
+<li>WhatsApp trip reports and daily alerts</li>
+<li>Your data stays in your Google account</li>
+</ul>
+<div class="calc"><label for="trucks"><b>How many trucks?</b> <span id="tn">5</span></label>
+<input type="range" id="trucks" min="1" max="100" value="5" aria-label="Number of trucks"><div class="total" id="tot">R1 000 / month</div></div>
+<button class="btn" id="subBtn" style="width:100%">Subscribe now</button>
+<div id="eft">
+<h3>Pay by EFT</h3>
+<div class="row"><span>Account holder</span><b>GERSWILLE DAVIDS</b></div>
+<div class="row"><span>Bank</span><b>GoTyme Bank</b></div>
+<div class="row"><span>Account number</span><b><span id="acc">51125371737</span><button class="copy" data-c="acc">Copy</button></b></div>
+<div class="row"><span>Branch code</span><b>678910</b></div>
+<div class="row"><span>Amount</span><b id="eAmt">R1 000</b></div>
+<div class="row"><span>Reference</span><b id="ref">GONNIE-5</b></div>
+<p class="note" style="margin:12px 0">After paying, send your proof of payment on WhatsApp and we will set up your workbook.</p>
+<a class="btn" id="proof" href="#" style="width:100%">Send proof of payment</a>
+</div>
+<p class="note" style="margin-top:14px">Prices in South African rand.</p>
+</div></div>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:780px">
+<div class="kick rv">FAQ</div><h2 class="rv">Questions</h2><p class="sub"></p>
+<details class="rv"><summary>Do I pay per driver or per user?</summary><p>No. Only per truck: R200 per truck per month.</p></details>
+<details class="rv"><summary>Can I try it for one truck or one month?</summary><p>Yes. Subscribe for a single truck for a single month. That also works if you only want to check a recent trip.</p></details>
+<details class="rv"><summary>Do I need to be good with spreadsheets?</summary><p>No. Drivers use a simple form and you read the dashboard.</p></details>
+<details class="rv"><summary>Does a fuel flag mean someone is stealing?</summary><p>No. A fuel exception is a prompt to check slips and odometers. It points you to where to look, and you decide what it means.</p></details>
+<details class="rv"><summary>Where is my data stored?</summary><p>In your own Google Drive. You can export or delete it whenever you like.</p></details>
+<details class="rv"><summary>How do I cancel?</summary><p>Message us on WhatsApp before your next billing date. No contract, no penalty.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap"><h2 class="rv">Know exactly where every rand goes.</h2>
+<p class="sub rv" style="margin-inline:auto">Book a free Fleet Review and see what your own numbers are hiding.</p>
+<a class="btn" id="review2" href="#">Book a Fleet Review</a></div></section>
+</main>
+
+<footer><div class="wrap">
+<p><b class="serif" style="color:var(--text)">GONNIE FLEET</b> by ARGS · Durban, South Africa</p>
+<p>WhatsApp <a href="https://wa.me/27836445128">083 644 5128</a> · <a href="mailto:gerswilledavids@gmail.com">gerswilledavids@gmail.com</a></p>
+<p class="note">© 2026 GONNIE FLEET. All rights reserved.</p>
+</div></footer>
+
+<script>
+document.documentElement.classList.add("js");
+var WA="27836445128";
+function fmt(n){return "R"+n.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");}
+var r=document.getElementById("trucks"),tn=document.getElementById("tn"),tot=document.getElementById("tot"),eft=document.getElementById("eft");
+function upd(){var n=+r.value,a=fmt(n*200);tn.textContent=n;tot.textContent=a+" / month";
+document.getElementById("eAmt").textContent=a;document.getElementById("ref").textContent="GONNIE-"+n;
+document.getElementById("proof").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi, I have paid "+a+" by EFT for GONNIE FLEET ("+n+" truck"+(n>1?"s":"")+"). Reference GONNIE-"+n+". Proof attached.");}
+r.addEventListener("input",upd);upd();
+document.getElementById("subBtn").addEventListener("click",function(){eft.classList.add("on");eft.scrollIntoView({behavior:"smooth",block:"center"});});
+var rv="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi, I would like to book a Fleet Review.");
+document.getElementById("reviewBtn").href=rv;document.getElementById("review2").href=rv;
+document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){var t=document.getElementById(b.dataset.c).textContent;try{navigator.clipboard.writeText(t);b.textContent="Copied";}catch(e){b.textContent="Select and copy";}});});
+try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll(".rv").forEach(function(el){io.observe(el);});}catch(e){document.querySelectorAll(".rv").forEach(function(el){el.classList.add("in");});}
+</script>
+</body>
+</html>
